@@ -765,13 +765,12 @@ def _render_results(
     with tab_tables:
         _render_tables(sector_df, holdings_df, summary)
 
-    st.caption(
-        "Brinson-Fachler (1985) single-period sector attribution uses simple period price returns "
-        "(P₁ / P₀ − 1) against the 11 Select Sector SPDR ETFs (XLK, XLF, XLV, XLY, XLC, XLI, "
-        "XLP, XLE, XLU, XLRE, XLB) weighted by S&P 500 sector allocations. "
+    st.markdown(
+        "Brinson-Fachler attribution uses single period simple price returns "
+        "(P₁ / P₀ − 1) of the active portfolio vs the same single period simple price returns of the benchmark and its components.  \n"
         "Period summary metrics under Section 2 use constant-weight compounded returns, "
-        "SPY as the benchmark, annualized Markowitz standard deviation (σ = √(wᵀ Σ w)), "
-        "and Beta Cov(R_p, R_SPY) / Var(R_SPY)."
+        "SPY as the benchmark, annualized standard deviation, "
+        "and Beta as covariance / variance."
     )
 
 
@@ -799,7 +798,7 @@ def _render_period_kpis(
     p3.metric(
         "Portfolio Volatility",
         _fmt_pct(portfolio_risk),
-        help="Annualized Markowitz standard deviation: √(wᵀ Σ w) using daily return covariances.",
+        help="Annualized standard deviation using daily return covariances.",
     )
     p4.metric(
         "S&P 500 Volatility",
@@ -809,7 +808,7 @@ def _render_period_kpis(
     p5.metric(
         "Portfolio Beta (vs. SPY)",
         _fmt_num(port_beta),
-        help="Sensitivity to SPY daily returns: Cov(R_p, R_SPY) / Var(R_SPY) using constant-weight daily portfolio returns.",
+        help="Sensitivity to SPY daily returns: covariance / variance using constant-weight daily portfolio returns.",
     )
 
     if pd.notna(ann_port_return) or pd.notna(ann_spy_return):

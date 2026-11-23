@@ -27,7 +27,7 @@ def _render_search() -> None:
     with st.form("ticker_search_form", border=False):
         col_q, col_btn = st.columns([4, 1], vertical_alignment="bottom")
         query = col_q.text_input(
-            "Search by company name or symbol (comma-separated allowed)",
+            "Search by company name or symbol. Use commas to seperate ",
             placeholder="e.g. Apple, MSFT, SPY",
             key="ticker_search_query",
         )

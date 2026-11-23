@@ -93,7 +93,7 @@ def render() -> None:
 
     st.caption(
         "Simple price returns from Yahoo Finance closes adjusted for splits and "
-        "dividends. Past performance does not guarantee future results."
+        "dividends."
     )
 
 
